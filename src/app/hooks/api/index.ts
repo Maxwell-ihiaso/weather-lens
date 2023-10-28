@@ -1,5 +1,5 @@
-import { WEATHER_API_BASE_URL } from '@/config'
 import axios from 'axios'
+import { WEATHER_API_BASE_URL } from '@/config'
 
 export const AxiosPrivate = axios.create({
     baseURL: WEATHER_API_BASE_URL,

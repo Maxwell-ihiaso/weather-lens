@@ -1,20 +1,38 @@
 import { createSlice } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { RootState } from '../store'
+
+// Define a type for the slice state
+interface CounterState {
+    value: number
+}
+
+// Define the initial state using that type
+const initialState: CounterState = {
+    value: 0,
+}
 
 export const weatherSlice = createSlice({
-    // Name of our slice which we will call in our store
     name: 'weather',
-    // Initial state
-    initialState: {
-        value: '',
-    },
-
-    // Our method inside reducers to change our state value
+    // `createSlice` will infer the state type from the `initialState` argument
+    initialState,
     reducers: {
-        updateWeather: (state, action) => {
-            state.value = action.payload
+        increment: (state) => {
+            state.value += 1
+        },
+        decrement: (state) => {
+            state.value -= 1
+        },
+        // Use the PayloadAction type to declare the contents of `action.payload`
+        incrementByAmount: (state, action: PayloadAction<number>) => {
+            state.value += action.payload
         },
     },
 })
 
-// Exporting our method to be called in the component
-export const { updateWeather } = weatherSlice.actions
+export const { increment, decrement, incrementByAmount } = weatherSlice.actions
+
+// Other code such as selectors can use the imported `RootState` type
+export const selectCount = (state: RootState) => state.weather.value
+
+export default weatherSlice.reducer
