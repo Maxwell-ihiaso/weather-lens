@@ -1,0 +1,1 @@
+export const WEATHER_API_BASE_URL = process.env.NEXT_PUBLIC_WEATHER_API_BASE_URL
