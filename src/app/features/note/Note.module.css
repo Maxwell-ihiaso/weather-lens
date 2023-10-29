@@ -9,6 +9,7 @@
 
 .editor {
     transition: 1s all ease;
+    padding: 16px
 }
 
 .note_header {
@@ -55,10 +56,25 @@
 }
 
 .saved_notes {
-    border-left: 5px solid var(--color-secondary);
+    border-left: 3px dotted var(--color-secondary);
     padding-left: 16px;
 }
 
+.note_action_container {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 32px;
+}
+
+.note_action {
+    transition: .3s all ease;
+
+}
+
+.note_action:hover {
+    transform: scale(1.2);
+}
 .button_cancel {
     background: var(--color-error)
 }
@@ -67,3 +83,9 @@
     margin-bottom: 8px;
 }
 
+
+@media screen and (min-width: 768px) {
+    .catch_phrase {
+        padding: 16px;
+    }
+}

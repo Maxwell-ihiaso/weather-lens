@@ -11,16 +11,18 @@ const Note: React.FC<NoteProps> = ({ city }) => {
     const [note, setNote] = useState<LocalNoteProps>({} as LocalNoteProps)
     const [showEditor, setShowEditor] = useState(false)
 
-    const { addNote, deleteNote, updateNote, getNotes } = useWeatherService()
+    const { localStoreDB, deleteNote, updateNote, getNotes } =
+        useWeatherService()
     const { FontAwesomeIcon, faPenToSquare, faTrash } = useIcon()
 
     useEffect(() => {
         const local_note = getNotes(city)
 
         if (local_note) {
-            setNote(local_note)
+            return setNote(local_note)
         }
-    }, [])
+        setNote({} as LocalNoteProps)
+    }, [city, localStoreDB])
 
     return (
         <section className={styles.note_section}>
@@ -111,8 +113,16 @@ const Note: React.FC<NoteProps> = ({ city }) => {
                     </p>
                     <p className={styles.saved_notes}>{note.note}</p>
                     <div className={styles.note_action_container}>
-                        <FontAwesomeIcon icon={faPenToSquare} />
-                        <FontAwesomeIcon icon={faTrash} />
+                        <FontAwesomeIcon
+                            icon={faPenToSquare}
+                            className={styles.note_action}
+                            onClick={() => setShowEditor(true)}
+                        />
+                        <FontAwesomeIcon
+                            icon={faTrash}
+                            className={styles.note_action}
+                            onClick={() => deleteNote(city)}
+                        />
                     </div>
                 </section>
             )}

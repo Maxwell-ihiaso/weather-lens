@@ -24,10 +24,8 @@ const CardGroup: React.FC<CardGroupProps> = () => {
     } = useWeatherService()
 
     useEffect(() => {
-        console.log('STORAGE ALTERED')
         getDefaultWeatherDetails()
             ?.then((data) => {
-                console.log('DATA', data)
                 setCitiesMeta(data as CityMetaProps[])
             })
             .catch((error) => console.log('ERROR', error))

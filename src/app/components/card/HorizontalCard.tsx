@@ -28,7 +28,13 @@ const HorizontalCard: React.FC<CardProps> = ({
             <p className={styles.weatherCondition}>
                 {cityData.weatherCondition}
             </p>
-            <button onClick={onDelete} className={styles.close}>
+            <button
+                onClick={(e) => {
+                    e.stopPropagation()
+                    onDelete()
+                }}
+                className={styles.close}
+            >
                 x
             </button>
         </section>

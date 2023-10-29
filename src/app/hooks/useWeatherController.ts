@@ -237,7 +237,7 @@ const useWeatherService = () => {
             if (local_DB) {
                 const { notes } = local_DB
 
-                if (notes) {
+                if (notes && notes.length) {
                     updated_Note = notes.map((_note) =>
                         _note.city === city ? { ..._note, note } : _note
                     )
@@ -330,7 +330,7 @@ const useWeatherService = () => {
         }
     }
 
-    const deleteNote = (city: string, note: string) => {
+    const deleteNote = (city: string) => {
         // city = capitalize(city)
 
         const local_DB = getLocalDB()
