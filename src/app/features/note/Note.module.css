@@ -1,0 +1,91 @@
+.note_section {
+    /* justify-self: flex-start; */
+    /* align-self: flex-start; */
+    width: 100%;
+    max-width: 62.5rem;
+    margin-top: 2rem; 
+}
+
+.editor {
+    transition: 1s all ease;
+    padding: 16px;
+}
+
+.note_header {
+    margin-bottom: 0.875rem;
+}
+
+.divider {
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+
+.textbox {
+    width: 100%;
+    background: #fff;
+    padding: 1rem;
+    color: var(--color-primary);
+    font-size: 1rem;
+}
+
+.button_container {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+.catch_phrase {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.button {
+    padding: 0.5rem 1rem;
+    border-radius: 62.4375rem;
+    cursor: pointer;
+    background: var(--color-secondary);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: #fff;
+}
+
+.date {
+    font-size: 0.625rem;
+    margin-bottom: 8px;
+}
+
+.saved_notes {
+    border-left: 0.1875rem dotted var(--color-secondary);
+    padding-left: 1rem;
+}
+
+.note_action_container {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.note_action {
+    transition: .3s all ease;
+
+}
+
+.note_action:hover {
+    transform: scale(1.2);
+}
+.button_cancel {
+    background: var(--color-error)
+}
+
+.margin_bottom_small {
+    margin-bottom: 0.5rem;
+}
+
+
+@media screen and (min-width: 768px) {
+    .catch_phrase {
+        padding: 16px;
+    }
+}
