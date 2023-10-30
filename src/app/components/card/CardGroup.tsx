@@ -41,7 +41,7 @@ const CardGroup: React.FC<CardGroupProps> = () => {
             .catch((error) => console.log('ERROR', error))
     }, [localStoreDB])
 
-    console.log("FAVLIST", favList)
+    console.log('FAVLIST', favList)
 
     return (
         <>
@@ -60,9 +60,9 @@ const CardGroup: React.FC<CardGroupProps> = () => {
                     </React.Fragment>
                 ))}
             </div>
-            {favList.length && favList?.[0] !== undefined ? (
+            {/* {favList.length && favList?.[0] !== undefined ? (
                 <FavoritesCarousel favList={favList} />
-            ) : null}
+            ) : null} */}
             <section className={styles.section}>
                 {citiesMeta?.map((cities_meta, idx) => (
                     <React.Fragment key={cities_meta?.city}>
@@ -72,7 +72,7 @@ const CardGroup: React.FC<CardGroupProps> = () => {
                                 addOrRemoveFromCitiesToShow(cities_meta?.city)
                             }
                             onClick={() =>
-                                router.prefetch(`/city/${cities_meta?.city}`)
+                                router.push(`/city/${cities_meta?.city}`)
                             }
                             cityData={cities_meta}
                         />

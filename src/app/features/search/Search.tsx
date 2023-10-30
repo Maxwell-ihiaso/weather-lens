@@ -2,6 +2,7 @@
 
 import { useIcon } from '@/hooks/useIcon'
 import { useRouter } from 'next/navigation'
+
 import React, { useState } from 'react'
 import styles from './Search.module.css'
 
@@ -11,7 +12,7 @@ const Search = () => {
     const router = useRouter()
 
     const handleSearch = () => {
-        router.prefetch(`/city/${searchParams}`)
+        router.push(`/city/${searchParams}`)
         setSearchParams('')
     }
 
