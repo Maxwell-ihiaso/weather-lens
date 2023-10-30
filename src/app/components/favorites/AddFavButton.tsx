@@ -19,7 +19,9 @@ const AddFavButton: React.FC<AddFavButtonPropps> = ({ city }) => {
     }, [localStoreDB])
 
     useEffect(() => {
-        if (favList.length && favList?.[0] !== undefined) {
+        if (favList.length) {
+            if (favList?.[0] === undefined) return setIsAddedFav(false)
+
             const isExisting = favList.find((_fav) => _fav.city === city)
 
             return setIsAddedFav(Boolean(isExisting))

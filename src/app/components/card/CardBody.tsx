@@ -36,7 +36,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     temp
                 </p>
-                <p>{cityData.weatherData?.current.temp_c}°C</p>
+                <p>{cityData?.weatherData?.current.temp_c}°C</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -45,7 +45,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     Feels Like
                 </p>
-                <p>{cityData.weatherData?.current.feelslike_c}°C</p>
+                <p>{cityData?.weatherData?.current.feelslike_c}°C</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -54,7 +54,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     wind
                 </p>
-                <p>{cityData.weatherData?.current.wind_mph} mph</p>
+                <p>{cityData?.weatherData?.current.wind_mph} mph</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -65,7 +65,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     wind direction
                 </p>
-                <p>{cityData.weatherData?.current.wind_dir}</p>
+                <p>{cityData?.weatherData?.current.wind_dir}</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -74,7 +74,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     Pressure
                 </p>
-                <p>{cityData.weatherData?.current.pressure_in} in</p>
+                <p>{cityData?.weatherData?.current.pressure_in} in</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -83,7 +83,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     Precipitation
                 </p>
-                <p>{cityData.weatherData?.current.precip_mm} mm</p>
+                <p>{cityData?.weatherData?.current.precip_mm} mm</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -92,7 +92,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     Humidity
                 </p>
-                <p>{cityData.weatherData?.current.humidity}</p>
+                <p>{cityData?.weatherData?.current.humidity}</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -101,7 +101,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     UV
                 </p>
-                <p>{cityData.weatherData?.current.uv}</p>
+                <p>{cityData?.weatherData?.current.uv}</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -112,7 +112,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     Cloud
                 </p>
-                <p>{cityData.weatherData?.current.cloud}</p>
+                <p>{cityData?.weatherData?.current.cloud}</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -121,7 +121,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     Country
                 </p>
-                <p>{cityData.weatherData?.location.country}</p>
+                <p>{cityData?.weatherData?.location.country}</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -130,7 +130,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     Region
                 </p>
-                <p>{cityData.weatherData?.location.region}</p>
+                <p>{cityData?.weatherData?.location.region}</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -139,7 +139,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     Latitude
                 </p>
-                <p>{cityData.weatherData?.location.lat}</p>
+                <p>{cityData?.weatherData?.location.lat}</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -148,7 +148,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     Longitude
                 </p>
-                <p>{cityData.weatherData?.location.lon}</p>
+                <p>{cityData?.weatherData?.location.lon}</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -157,7 +157,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     Time Zone
                 </p>
-                <p>{cityData.weatherData?.location.tz_id.substring(0, 12)}</p>
+                <p>{cityData?.weatherData?.location.tz_id.substring(0, 12)}</p>
             </div>
             <div className={styles.detailsLayout}>
                 <p>
@@ -166,7 +166,7 @@ const CardBody: React.FC<CardProps> = ({ cityData, onDelete }) => {
                     </span>
                     Date/ Time
                 </p>
-                <p>{cityData.weatherData?.location.localtime}</p>
+                <p>{cityData?.weatherData?.location.localtime}</p>
             </div>
         </section>
     )
