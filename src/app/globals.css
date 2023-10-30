@@ -44,7 +44,7 @@
   /* THEME PALETTE  */
   --color-primary: #171B34;
   --color-secondary: #9A95AB;
-  --color-secondary-light: ##D9D6E2;
+  --color-secondary-light: #D9D6E2;
   --color-error: rgba(210, 7, 7, 0.503);
 
   /* BREAK POINTS  */
@@ -101,7 +101,7 @@
 
 html,
 body {
-  max-width: 100vw;
+  max-width: 100dvw;
   overflow-x: hidden;
 }
 
@@ -128,7 +128,7 @@ background-attachment: fixed;
 background-size: auto;
 background-position: center;
     
-    height: 100vh;
+    height: 100dvh;
 }
 
 a {

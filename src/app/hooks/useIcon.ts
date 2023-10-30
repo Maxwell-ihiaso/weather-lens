@@ -29,6 +29,8 @@ import {
     faCalendar,
     faPenToSquare,
     faTrash,
+    faMagnifyingGlass,
+    faArrowRight,
 } from '@fortawesome/free-solid-svg-icons'
 
 export const useIcon = () => {
@@ -55,5 +57,7 @@ export const useIcon = () => {
         faCalendar,
         faPenToSquare,
         faTrash,
+        faMagnifyingGlass,
+        faArrowRight,
     }
 }

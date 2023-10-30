@@ -13,20 +13,20 @@ const HorizontalCard: React.FC<CardProps> = ({
 }) => {
     return (
         <section className={styles.card} onClick={onClick}>
-            <p className={styles.weatherCity}>{cityData.city}</p>
+            <p className={styles.weatherCity}>{cityData?.city}</p>
             <div className={styles.weatherIconContainer}>
                 <Image
                     className={styles.logo}
-                    src={cityData.icon}
+                    src={cityData?.icon}
                     alt="weather condition icon"
                     width={50}
                     height={50}
                     priority
                 />
             </div>
-            <p>{cityData.weatherData.current.temp_c}°C</p>
+            <p>{cityData?.weatherData.current.temp_c}°C</p>
             <p className={styles.weatherCondition}>
-                {cityData.weatherCondition}
+                {cityData?.weatherCondition}
             </p>
             <button
                 onClick={(e) => {

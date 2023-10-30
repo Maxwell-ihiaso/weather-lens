@@ -113,8 +113,6 @@ const useWeatherService = () => {
     }
 
     const addOrRemoveFromFavList = (city: string) => {
-        city = capitalize(city)
-
         const local_DB = getLocalDB()
         let updatedFavList: string[] = []
 
@@ -123,13 +121,24 @@ const useWeatherService = () => {
                 const { favorites } = local_DB
 
                 if (favorites) {
+                    if (favorites.length === 0) {
+                        const updated_Local_DB = {
+                            ...local_DB,
+                            favorites: [city],
+                        }
+
+                        setLocalStoreDB(updated_Local_DB)
+                        setLocalDB(updated_Local_DB)
+
+                        return
+                    }
                     const action = favorites?.includes(city) ? 'remove' : 'add'
 
                     if (action.toLowerCase() === 'remove') {
                         updatedFavList = favorites?.filter(
                             (fav_item) => fav_item !== city
                         ) as string[]
-                        toast.success(`${city} has been removed to Favorites`)
+                        toast.success(`${city} has been removed from Favorites`)
                     } else if (action.toLowerCase() === 'remove') {
                         updatedFavList = [...(favorites as string[]), city]
                         toast.success(`${city} has been added to Favorites`)
@@ -145,7 +154,7 @@ const useWeatherService = () => {
                 } else {
                     const updated_Local_DB = {
                         ...local_DB,
-                        favorites: updatedFavList.sort(),
+                        favorites: [city],
                     }
 
                     setLocalStoreDB(updated_Local_DB)
@@ -153,7 +162,7 @@ const useWeatherService = () => {
                 }
             } else {
                 const updated_Local_DB = {
-                    favorites: updatedFavList.sort(),
+                    favorites: [city],
                 }
 
                 setLocalStoreDB(updated_Local_DB)
@@ -406,6 +415,23 @@ const useWeatherService = () => {
             console.log(error)
         }
     }
+    const getFavorites = () => {
+        const local_DB = getLocalDB()
+
+        try {
+            if (local_DB) {
+                const { favorites } = local_DB
+                if (favorites) {
+                    return favorites.length
+                        ? fetchDataArr(favorites)
+                        : undefined
+                }
+                return undefined
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const getNotes = (city: string) => {
         const local_DB = getLocalDB()
@@ -434,6 +460,7 @@ const useWeatherService = () => {
         getWeatherUpdateFromLocation,
         getDefaultWeatherDetails,
         getNotes,
+        getFavorites,
     }
 }
 

@@ -1,28 +1,27 @@
+'use client'
+
 import Image from 'next/image'
 import React from 'react'
 import Slider, { Settings } from 'react-slick'
 
-import styles from './SliderCarousel.module.css'
-import { SliderCarouselProps } from './interface'
+import styles from './FavoritesCarousel.module.css'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import { FavoritesCarouselProps } from './interface'
+import useWeatherService from '@/hooks/useWeatherController'
 
-const SlideCarousel: React.FC<SliderCarouselProps> = ({ cityData }) => {
+const FavoritesCarousel: React.FC<FavoritesCarouselProps> = ({ favList }) => {
+    const { addOrRemoveFromFavList } = useWeatherService()
     const settings: Settings = {
         speed: 2000,
         autoplaySpeed: 2000,
         dots: false,
         arrows: true,
         swipe: true,
-        // swipeToSlide: true,
-        // pauseOnDotsHover: false,
-        // pauseOnHover: false,
-        // pauseOnFocus: false,
         infinite: true,
         autoplay: true,
         slidesToShow: 7,
-        // cssEase: 'linear',
         slidesToScroll: 4,
         responsive: [
             {
@@ -50,30 +49,37 @@ const SlideCarousel: React.FC<SliderCarouselProps> = ({ cityData }) => {
     }
 
     return (
-        <Slider {...settings} className={styles.slider_container}>
-            {cityData?.weatherData?.forecast?.forecastday?.[0].hour.map(
-                (_forecast) => (
-                    <div
-                        key={_forecast.time_epoch}
-                        className={styles.slide_card}
-                    >
-                        <p>{_forecast.time.slice(11)}</p>
+        <div>
+            <p>Favorites</p>
+            <Slider {...settings} className={styles.slider_container}>
+                {favList?.map((city_data) => (
+                    <div key={city_data?.city} className={styles.slide_card}>
+                        <p>{city_data?.city}</p>
                         <div>
                             <Image
                                 className={styles.logo}
-                                src={`https:${_forecast.condition.icon}`}
+                                src={`${city_data?.icon}`}
                                 alt="weather condition icon"
                                 width={50}
                                 height={50}
                                 priority
                             />
                         </div>
-                        <p>{`${_forecast.temp_c}°c`}</p>
+                        <p>{`${city_data?.weatherData?.current?.temp_c}°c`}</p>
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                addOrRemoveFromFavList(city_data?.city)
+                            }}
+                            className={styles.close}
+                        >
+                            x
+                        </button>
                     </div>
-                )
-            )}
-        </Slider>
+                ))}
+            </Slider>
+        </div>
     )
 }
 
-export default SlideCarousel
+export default FavoritesCarousel
