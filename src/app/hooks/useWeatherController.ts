@@ -79,41 +79,42 @@ const useWeatherService = () => {
         }
     }
 
-    const getWeatherUpdateFromLocation = async (address: string) => {
-        console.log('RETRIEVING DATA COORDINATES')
-        const { latitude, longitude } = await getLocation()
+    // const getWeatherUpdateFromLocation = async (address: string) => {
+    //     console.log('RETRIEVING DATA COORDINATES')
+    //     const { latitude, longitude } = await getLocation()
 
-        try {
-            const response = await AxiosPrivate.get(
-                GOOGLE_GEOCODING_URL as string,
-                {
-                    params: {
-                        latlng: `${latitude}, ${longitude}`,
-                        key: GOOGLE_API_KEY,
-                    },
-                }
-            )
+    //     try {
+    //         const response = await AxiosPrivate.get(
+    //             GOOGLE_GEOCODING_URL as string,
+    //             {
+    //                 params: {
+    //                     latlng: `${latitude}, ${longitude}`,
+    //                     key: GOOGLE_API_KEY,
+    //                 },
+    //             }
+    //         )
 
-            const { results } = response.data
+    //         const { results } = response.data
 
-            if (results.length > 0) {
-                const addressComponent = results[0].address_components
+    //         if (results.length > 0) {
+    //             const addressComponent = results[0].address_components
 
-                return getWeatherCondition(
-                    addressComponent?.[0]?.long_name
-                ).then((weather_data) => weather_data)
-            } else {
-                console.error('No results found for your location.')
-                return null
-            }
-        } catch (error) {
-            console.error('Error geocoding address:', error)
-            return null
-        }
-    }
+    //             return getWeatherCondition(
+    //                 addressComponent?.[0]?.long_name
+    //             ).then((weather_data) => weather_data)
+    //         } else {
+    //             console.error('No results found for your location.')
+    //             return null
+    //         }
+    //     } catch (error) {
+    //         console.error('Error geocoding address:', error)
+    //         return null
+    //     }
+    // }
 
     const addOrRemoveFromFavList = (city: string) => {
         const local_DB = getLocalDB()
+
         let updatedFavList: string[] = []
 
         try {
@@ -174,8 +175,6 @@ const useWeatherService = () => {
     }
 
     const addOrRemoveFromCitiesToShow = (city: string) => {
-        // city = capitalize(city)
-
         const local_DB = getLocalDB()
         let updatedCitiesToShow: string[] = []
 
@@ -421,13 +420,16 @@ const useWeatherService = () => {
         try {
             if (local_DB) {
                 const { favorites } = local_DB
+
                 if (favorites) {
                     return favorites.length
                         ? fetchDataArr(favorites)
                         : undefined
                 }
+                
                 return undefined
             }
+            return undefined
         } catch (error) {
             console.log(error)
         }
@@ -457,7 +459,7 @@ const useWeatherService = () => {
         addNote,
         updateNote,
         deleteNote,
-        getWeatherUpdateFromLocation,
+        // getWeatherUpdateFromLocation,
         getDefaultWeatherDetails,
         getNotes,
         getFavorites,

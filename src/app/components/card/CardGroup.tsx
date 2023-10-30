@@ -41,6 +41,8 @@ const CardGroup: React.FC<CardGroupProps> = () => {
             .catch((error) => console.log('ERROR', error))
     }, [localStoreDB])
 
+    console.log("FAVLIST", favList)
+
     return (
         <>
             <Search />
@@ -70,7 +72,7 @@ const CardGroup: React.FC<CardGroupProps> = () => {
                                 addOrRemoveFromCitiesToShow(cities_meta?.city)
                             }
                             onClick={() =>
-                                router.push(`/city/${cities_meta?.city}`)
+                                router.prefetch(`/city/${cities_meta?.city}`)
                             }
                             cityData={cities_meta}
                         />

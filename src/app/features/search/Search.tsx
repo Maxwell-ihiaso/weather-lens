@@ -11,7 +11,7 @@ const Search = () => {
     const router = useRouter()
 
     const handleSearch = () => {
-        router.push(`/city/${searchParams}`)
+        router.prefetch(`/city/${searchParams}`)
         setSearchParams('')
     }
 

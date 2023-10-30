@@ -55,7 +55,7 @@
   --screen-xtra-large: 1200px;
 
   /* FONTS  */
-  --typography: 14px;
+  --typography: 1rem;
 
   --font-poppins: 'Poppins', sans-serif
 }

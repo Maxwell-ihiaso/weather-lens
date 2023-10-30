@@ -17,6 +17,7 @@
 
 .search_icon {
     padding: 4px;
+    font-size: 14px;
 }
 
 .search_field {
@@ -26,6 +27,7 @@
     padding: 8px;
     background: transparent;
     color: #fff;
+    font-size: 1rem;
 }
 
 .search_button_go {
